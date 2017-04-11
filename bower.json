@@ -1,0 +1,24 @@
+{
+  "name": "AngularBackEnd",
+  "description": "",
+  "main": "",
+  "authors": [
+    "lindianlide <lindianlienergy@163.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Angular-BackEnd"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}
