@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var VolumeSchema = require('../../dao/schemas/VolumeSchema');
 // 将该Schema发布为Modelv
-var VolumeModel = mongoose.model('olume', VolumeSchema);
+var VolumeModel = mongoose.model('volume', VolumeSchema);
 var dbHelper = require('../../dao/utils/DBHelper');
 
 VolumeModel.getAllVolumes = function(callback) {

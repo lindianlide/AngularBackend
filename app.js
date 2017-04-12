@@ -37,7 +37,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// app.locals 属性值将贯穿程序的整个生命周期
+app.locals.moment=require('moment');
 app.use('/', indexRouter);
 app.use('/volume', volumeRouter);
 app.listen(port);    //监听端口
