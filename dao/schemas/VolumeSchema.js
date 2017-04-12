@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var SEQModel = require('../models/SEQModel');
 
 var VolumeSchema = new mongoose.Schema({
-    _id: Number,
     name: String,
     size: Number,
     status: String,
@@ -31,15 +30,17 @@ VolumeSchema.pre('save', function (next) {
      this.updateAt=Date.now();
      }*/
 
+   /*
+   用于递增序列
     SEQModel.getNextVal(function (error, IDSEQ) {
         if (error) {
             return next(error);
         }
         console.log(IDSEQ);
         //doc._id = IDSEQ.curr_val;
-        doc._id = 11;
+        doc._id = 12;
         next();
-    });
+    });*/
 });
 
 // 静态方法在Model层就能使用 VolumeModel.findById('www',function(err,persons){ });

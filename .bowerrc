@@ -1,0 +1,4 @@
+{
+  "directory": "public/libs",
+  "提示": "bower install时会安装到该目录"
+}

@@ -4,19 +4,18 @@ block content
     .container
         .row
             form.form-horizontal(method="post",action="/volume/createVolume")
-                input(type="hidden",name="_id",value="#{volume._id}")
                 .form-group
-                    lable.col-sm-3.control-label(for="inputName") 云硬盘名字
-                    .col-sm-10
+                    lable.col-sm-2.control-label(for="inputName") 云硬盘名字
+                    .col-sm-3
                         input#inputName.form-control(type="text",name="name",value="#{volume.name}")
                 .form-group
-                    lable.col-sm-3.control-label(for="inputSize") 大小
-                    .col-sm-10
+                    lable.col-sm-2.control-label(for="inputSize") 大小
+                    .col-sm-3
                         input#inputSize.form-control(type="text",name="size",value="#{volume.size}")
                 .form-group
-                    lable.col-sm-3.control-label(for="inputStatus") 状态
-                    .col-sm-10
+                    lable.col-sm-2.control-label(for="inputStatus") 状态
+                    .col-sm-3
                         input#inputStatus.form-control(type="text",name="status",value="#{volume.status}")
                 .form-group
-                    .col-sm-offset-2.col-sm-10
+                    .col-sm-offset-2.col-sm-2
                     button.btn-default(type="submit" ) 创建

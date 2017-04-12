@@ -43,7 +43,6 @@ volumeRouter.get('/gotoCreateVolume', function (req, res) {
     res.render('volume', {    //返回首页,reader 第一个参数传入模板字符串，第二个参数传入变量,jade中可以获取该值显示
         title: '创建云硬盘', //传递参数，替代占位符
         volume: {
-            _id: '',
             name: '2', //测试jade可以获取该值
             size: '2',
             status: ''
