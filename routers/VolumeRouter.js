@@ -97,7 +97,7 @@ volumeRouter.post('/createVolume', function (req, res, next) {
     });
 });
 
-volumeRouter.post('/updateVolume', function (req, res, next) {
+volumeRouter.post('/pdateVolume', function (req, res, next) {
     var volume = req.body;
     var id = req.body.id;
 

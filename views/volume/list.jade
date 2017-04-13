@@ -19,7 +19,6 @@ block content
                             td #{item.status}
                             td #{moment(item.createAt).format('MM/DD/YYYY')}
                             td
-                                a(target='_blank',href="../volume/#{item._id}") 查看 |
                                 a(target='_blank',href="../volume/gotoUpdateVolume/#{item._id}")  修改 |
                                 a.del(target='_blank',href="#",data-id="#{item._id}")  删除
                                 //button.btn.btn-danger.del(type="button",data-id="#{item._id}") 删除
