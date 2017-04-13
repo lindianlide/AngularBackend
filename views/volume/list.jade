@@ -8,19 +8,19 @@ block content
                     tr
                         th 名称
                         th 大小
-                        th 容量
+                        th 状态
                         th 创建日期
                         th 操作
                 tbody
                     each item in volumes
-                        tr(class="item-name-#{item.name}")
+                        tr(class="item-id-#{item._id}")
                             td #{item.name}
                             td #{item.size}
                             td #{item.status}
                             td #{moment(item.createAt).format('MM/DD/YYYY')}
                             td
-                                a(target='_blank',href="../movie/#{item._id}") 查看 |
-                                a(target='_blank',href="../admin/update/#{item._id}")  修改 |
-                                a.del(target='_blank',href="#",data-name="#{item.name}")  删除
+                                a(target='_blank',href="../volume/#{item._id}") 查看 |
+                                a(target='_blank',href="../volume/gotoUpdateVolume/#{item._id}")  修改 |
+                                a.del(target='_blank',href="#",data-id="#{item._id}")  删除
                                 //button.btn.btn-danger.del(type="button",data-id="#{item._id}") 删除
      script(src="/js/volume.js")

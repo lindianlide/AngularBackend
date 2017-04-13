@@ -23,13 +23,13 @@ volumeRouter.get('/getAllVolumes', function (req, res, next) {
     // 利用静态方法查询
     VolumeModel.fetch(function (err, volumes) {
         if (err) {
-            console.log(err)
+            console.log(err);
         }
         res.render('volume/list', {    //返回首页
             title: '云硬盘列表页',    //传递参数，替代占位符
             volumes: volumes
-        })
-    })
+        });
+    });
 });
 
 
@@ -75,7 +75,7 @@ volumeRouter.get('/gotoCreateVolume', function (req, res) {
             size: '2',
             status: ''
         }
-    })
+    });
 });
 
 volumeRouter.post('/createVolume', function (req, res, next) {
@@ -87,36 +87,77 @@ volumeRouter.post('/createVolume', function (req, res, next) {
         }
         VolumeModel.fetch(function (err, volumes) {
             if (err) {
-                console.log(err)
+                console.log(err);
             }
             res.render('volume/list', {    //返回首页
                 title: '云硬盘列表页',    //传递参数，替代占位符
                 volumes: volumes
+            });
+        });
+    });
+});
+
+volumeRouter.post('/updateVolume', function (req, res, next) {
+    var volume = req.body;
+    var id = req.body.id;
+
+    if (id !== 'undefined') {
+        VolumeModel.updateVolume(id, volume, function (err, volumes) {
+            if (err) {
+                console.log(err)
+            }
+            VolumeModel.fetch(function (err, volumes) {
+                if (err) {
+                    console.log(err);
+                }
+                res.render('volume/list', {    //返回首页
+                    title: '云硬盘列表页',    //传递参数，替代占位符
+                    volumes: volumes
+                });
+            });
+        })
+    }
+});
+
+volumeRouter.get('/gotoUpdateVolume/:id', function (req, res, next) {
+    var id = req.params.id;
+    if (id) {
+        VolumeModel.getVolumeById(id, function (err, volume) {
+            res.render('volume/update', {
+                title: '云硬盘更新页',
+                volume: volume
             })
         })
-    });
+    }
+
+    /* var id = req.params.id;
+     var newInfo = req.body;
+     VolumeModel.updateVolume(id, newInfo, {}, function (err, volume) {
+     if (err) {
+     console.log(err);
+     throw err;
+     }
+     res.json(volume);
+     });*/
 });
 
-volumeRouter.put('/updateVolumeInfo/:_id', function (req, res, next) {
-    var id = req.params._id;
-    var newInfo = req.body;
-    VolumeModel.updateVolumeInfo(id, newInfo, {}, function (err, volume) {
+volumeRouter.delete('/deleteVolume', function (req, res, next) {
+    // deleteVolume/:id时用 var id = req.params.id;
+    var id = req.query.id;
+    VolumeModel.deleteVolumeById(id, function (err, volumes) {
         if (err) {
             console.log(err);
             throw err;
         }
-        res.json(volume);
-    });
-});
-
-volumeRouter.delete('/deleteVolumeById/:_id', function (req, res, next) {
-    var id = req.params._id;
-    VolumeModel.deleteVolumeById(id, function (err, volume) {
-        if (err) {
-            console.log(err);
-            throw err;
-        }
-        res.json(volume);
+        VolumeModel.fetch(function (err, volumes) {
+            if (err) {
+                console.log(err);
+            }
+            res.render('volume/list', {    //返回首页
+                title: '云硬盘列表页',    //传递参数，替代占位符
+                volumes: volumes
+            });
+        });
     });
 });
 
